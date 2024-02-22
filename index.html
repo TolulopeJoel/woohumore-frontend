@@ -12,6 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <div class="d-flex align-items-center justify-content-center vh-100">
       <form class="row theform" onsubmit="sendData(event)">
         <div>
-          <h1 class="text-center my-4 intro-title">Discover a Brighter News. Be the first to experience <span style="">WooHumore</span>!</h1>
+          <h1 class="text-center my-4 intro-title">Discover a Brighter News. Be the first to experience <span>WooHumore</span>!</h1>
           <p style="max-width: 550px;">
             Tired of the depressing news? WooHumore shows the good in tough news stories, all in engaging video clips.
           </p>
@@ -48,7 +49,6 @@
       event.preventDefault(); // Prevent default form submission
 
       const email = document.querySelector('.theform input').value;
-      console.log(email);
 
       const apiUrl = '...';
       const data = { "email": email };
