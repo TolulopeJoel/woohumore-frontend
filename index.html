@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Woohumore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section class="container">
+    <div class="d-flex align-items-center justify-content-center vh-100">
+      <form class="row theform" onsubmit="sendData(event)">
+        <div>
+          <h1 class="text-center my-4 intro-title">Discover a Brighter News. Be the first to experience <span style="">WooHumore</span>!</h1>
+          <p style="max-width: 550px;">
+            Tired of the depressing news? WooHumore shows the good in tough news stories, all in engaging video clips.
+          </p>
+        </div>
+
+        <div>
+          <div class="col-12 my-3">
+            <input class="form-control form-control-lg" type="email" placeholder="email address"
+              aria-label=".form-control-lg example">
+          </div>
+          <div class="col-12 my-3">
+            <button type="submit thebtn" class="btn btn-primary w-100 py-2">Get early access!</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <footer class="text-center mt-5">
+      &copy; 2024 WooHumore | <a target="_blank" href="https://x.com/dotolu">X</a> | <a target="_blank" href="https://github.com/tolulopejoel">Github</a>
+    </footer>
+  </section>
+
+  <script>
+    function sendData(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const email = document.querySelector('.theform input').value;
+      console.log(email);
+
+      const apiUrl = '...';
+      const data = { "email": email };
+
+      axios.post(apiUrl, data)
+        .then(response => {
+          console.log('Data sent successfully:', response.data);
+        })
+        .catch(error => {
+          console.error('Error sending data:', error.response.data.errors);
+        });
+    }
+  </script>
+</body>
+
+</html>
