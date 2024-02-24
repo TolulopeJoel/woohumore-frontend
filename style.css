@@ -129,15 +129,29 @@ h3 {
 
 .loader {
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #d353d3; /* Blue */
+  border-top: 4px solid #d353d3;
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  display: none;
   animation: spin 1s linear infinite;
   margin-right: 10px;
 }
 
+.cool {
+  justify-content: center;
+  display: flex;
+}
 
+.btn-success:disabled {
+  background-color: #0fc68f;
+  border-color: #0fc68f;
+  opacity: 1;
+}
+
+
+/* #20c997 */
+/* #198754 */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

@@ -35,7 +35,9 @@
               aria-label=".form-control-lg example">
           </div>
           <div class="col-12 my-3">
-            <span class="loader"></span>
+            <div class="cool">
+              <span class="loader"></span>
+            </div>
             <button type="submit" class="btn btn-primary w-100 py-2">
               Get early access!
             </button>
@@ -55,7 +57,7 @@
     function sendData(event) {
       event.preventDefault(); // Prevent default form submission
 
-      const email = document.querySelector('.theform input').value;
+      const email = document.querySelector('.theform input[type="email"]').value;
 
       const apiUrl = '...';
       const data = { "email": email };
@@ -70,19 +72,25 @@
 
       axios.post(apiUrl, data)
         .then(response => {
-          console.log('Data sent successfully:', response.data);
-          loader.style.display = 'none';
-          button.classList.remove('btn-primary');
-          button.classList.add('btn-success');
-          button.style.display = 'initial';
-          button.textContent = "✔";
-          button.setAttribute('disabled', true);
+          handleSuccess(loader, button); // Call handleSuccess function
         })
         .catch(error => {
-          console.error('Error sending data:', error);
-          loader.style.display = 'none';
-          button.removeAttribute('disabled');
+          console.error('Error sending data:', error.response.data);
+          handleSuccess(loader, button);
         });
+    }
+
+    function handleSuccess(loader, button) {
+      loader.style.display = 'none';
+      button.classList.remove('btn-primary');
+      button.classList.add('btn-success');
+      button.style.display = 'initial';
+      button.textContent = "✔";
+      button.setAttribute('disabled', true);
+
+      setTimeout(() => {
+        button.textContent = "You've been added! 🥳";
+      }, 800);
     }
   </script>
 </body>
