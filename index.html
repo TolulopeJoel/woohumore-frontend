@@ -18,11 +18,14 @@
 <body>
   <section class="container">
     <div class="d-flex align-items-center justify-content-center vh-100">
-      <form name="contact" method="POST" data-netlify="true" class="row theform">
+      <form name="contact" method="POST" class="row theform" onsubmit="sendData(event)">
         <div>
-          <h1 class="text-center my-4 intro-title">Discover a Brighter News. Be the first to experience <span>WooHumore</span>!</h1>
+          <h1 class="text-center my-4 intro-title">Discover a Brighter News. Be the first to experience
+            <span>WooHumore</span>!
+          </h1>
           <p style="max-width: 550px;">
-            Tired of the depressing news? WooHumore shows the good in tough news stories, all in engaging video clips.
+            Tired of always sad conventional news? WooHumore shows the good in tough news stories, all in engaging video
+            clips.
           </p>
         </div>
 
@@ -32,7 +35,10 @@
               aria-label=".form-control-lg example">
           </div>
           <div class="col-12 my-3">
-            <button type="submit thebtn" class="btn btn-primary w-100 py-2">Get early access!</button>
+            <span class="loader"></span>
+            <button type="submit" class="btn btn-primary w-100 py-2">
+              Get early access!
+            </button>
           </div>
         </div>
 
@@ -40,7 +46,8 @@
     </div>
 
     <footer class="text-center mt-5">
-      &copy; 2024 WooHumore | <a target="_blank" href="https://x.com/dotolu">X</a> | <a target="_blank" href="https://github.com/tolulopejoel">Github</a>
+      &copy; 2024 WooHumore | <a target="_blank" href="https://x.com/dotolu">X</a> | <a target="_blank"
+        href="https://github.com/tolulopejoel">Github</a>
     </footer>
   </section>
 
@@ -53,12 +60,28 @@
       const apiUrl = '...';
       const data = { "email": email };
 
+      const button = document.querySelector('.theform button');
+      const loader = document.querySelector('.loader');
+
+      // Show loader
+      loader.style.display = 'flex';
+      button.style.display = 'none';
+      button.setAttribute('disabled', true);
+
       axios.post(apiUrl, data)
         .then(response => {
           console.log('Data sent successfully:', response.data);
+          loader.style.display = 'none';
+          button.classList.remove('btn-primary');
+          button.classList.add('btn-success');
+          button.style.display = 'initial';
+          button.textContent = "✔";
+          button.setAttribute('disabled', true);
         })
         .catch(error => {
-          console.error('Error sending data:', error.response.data.errors);
+          console.error('Error sending data:', error);
+          loader.style.display = 'none';
+          button.removeAttribute('disabled');
         });
     }
   </script>
