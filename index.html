@@ -55,7 +55,7 @@
 
   <script>
     function sendData(event) {
-      event.preventDefault(); // Prevent default form submission
+      event.preventDefault();
 
       const email = document.querySelector('.theform input[type="email"]').value;
 
@@ -72,7 +72,7 @@
 
       axios.post(apiUrl, data)
         .then(response => {
-          handleSuccess(loader, button); // Call handleSuccess function
+          handleSuccess(loader, button);
         })
         .catch(error => {
           console.error('Error sending data:', error.response.data);
@@ -85,12 +85,12 @@
       button.classList.remove('btn-primary');
       button.classList.add('btn-success');
       button.style.display = 'initial';
-      button.textContent = "✔";
+      button.textContent = "You've been added! 🥳";
       button.setAttribute('disabled', true);
 
       setTimeout(() => {
-        button.textContent = "You've been added! 🥳";
-      }, 800);
+        button.textContent = "✔";
+      }, 3000);
     }
   </script>
 </body>

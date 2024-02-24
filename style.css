@@ -73,13 +73,13 @@ h2 {
 
 @media (max-width: 600px) {
   .intro-title {
-    font-size: 38px
+    font-size: 28px
   }
 }
 
 @media (max-width: 400px) {
   .intro-title {
-    font-size: 36px
+    font-size: 28px
   }
 }
 
@@ -149,9 +149,6 @@ h3 {
   opacity: 1;
 }
 
-
-/* #20c997 */
-/* #198754 */
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
