@@ -6,14 +6,14 @@
 }
 
 .btn-primary {
-  background-color: #d353d3;
-  border: 1px solid #d353d3;
+  background-color: #d353d3 !important;
+  border: 1px solid #d353d3 !important;
 }
 
 .btn-primary:hover {
   color: #d353d3 !important;
   background-color: transparent !important;
-  border: 1px solid #d353d3;
+  border: 1px solid #d353d3 !important;
 }
 
 .theform {

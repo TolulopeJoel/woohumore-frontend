@@ -31,6 +31,7 @@
 
         <div>
           <div class="col-12 my-3">
+            <span class="error-message text-danger"></span>
             <input class="form-control form-control-lg" type="email" placeholder="email address"
               aria-label=".form-control-lg example">
           </div>
@@ -75,9 +76,18 @@
           handleSuccess(loader, button);
         })
         .catch(error => {
-          console.error('Error sending data:', error.response.data);
-          handleSuccess(loader, button);
+          errorResponse = error.response.data.errors
+          console.error('Error sending data:', errorResponse);
+          handleError(loader, button, errorResponse.email);
         });
+    }
+
+    function handleError(loader, button, errorMessage) {
+      const error = document.querySelector('.error-message');
+      error.textContent = errorMessage;
+      loader.style.display = 'none';
+      button.style.display = 'initial';
+      button.removeAttribute('disabled');
     }
 
     function handleSuccess(loader, button) {
